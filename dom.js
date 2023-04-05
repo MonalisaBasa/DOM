@@ -22,9 +22,9 @@
 
 //style
 // (header1.style.borderBottom = 'solid 3px #000');
-var heading=document.getElementsByClassName('title');
-heading[0].style.color="Green";
-heading[0].style.fontWeight='bold';
+// var heading=document.getElementsByClassName('title');
+// heading[0].style.color="Green";
+// heading[0].style.fontWeight='bold';
 
 //GETELEMENTBYCLASSNAME//
 
@@ -34,5 +34,21 @@ heading[0].style.fontWeight='bold';
 // {
 //     items[i].style.fontWeight="bold";
 // }
-document.getElementsByClassName("list")[0].innerHTML="Item No.5"
-document.getElementsByTagName("li")[4].innerText="Item No.5"
+// document.getElementsByClassName("list")[0].innerHTML="Item No.5"
+// document.getElementsByTagName("li")[4].innerText="Item No.5"
+
+;
+
+//QUERYSELECTOR//
+var items=document.getElementsByClassName("list-group-item");
+items[1].style.backgroundColor="green"
+var secondItem=document.querySelectorAll('.list-group-item');
+secondItem[1].style.color="Green";
+var odd=document.querySelectorAll('li:nth-child(odd)');
+for(var i=0;i<odd.length;i++)
+{
+    odd[i].style.backgroundColor="#ccc";
+}
+
+
+
