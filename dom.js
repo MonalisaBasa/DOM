@@ -35,7 +35,7 @@
 //     items[i].style.fontWeight="bold";
 // }
 // document.getElementsByClassName("list")[0].innerHTML="Item No.5"
-// document.getElementsByTagName("li")[4].innerText="Item No.5"
+// document.getElementsByTagName("li")[4].innerText="Item No.5"  //TAGNAME//
 
 ;
 
@@ -49,6 +49,26 @@ for(var i=0;i<odd.length;i++)
 {
     odd[i].style.backgroundColor="#ccc";
 }
+
+//INSERTBEFORE//
+//Before header
+var newDiv=document.createElement("div");
+var newDivText=document.createTextNode("Hello World");
+newDiv.appendChild(newDivText);
+
+
+var container=document.querySelector('header .container');
+var h1=document.querySelector('header h1')
+console.log(container.insertBefore(newDiv,h1));
+
+//Before Item 1
+var newDiv1=document.createElement("div");
+var newDivText=document.createTextNode("Hello World");
+newDiv1.appendChild(newDivText);
+
+var list=document.getElementById("items");
+list.insertBefore(newDiv1,list.children[0]);
+
 
 
 
