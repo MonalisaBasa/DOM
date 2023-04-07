@@ -70,9 +70,12 @@
 // list.insertBefore(newDiv1,list.children[0]);
 
 var form=document.getElementById('addform');
-console.log(form);
 //ul tag
 var item=document.getElementById('items');
+var filter=document.getElementById('filter');
+
+//Filter event
+filter.addEventListener('keyup',filterItem);
 
 //form submit Event
 form.addEventListener('submit',addItem);
@@ -84,8 +87,10 @@ function addItem(e)
 {
     e.preventDefault();
 
-    //Get Input value 
+    //Get Input value for class item 
     var newItem=document.getElementById('item').value;
+    var newItem1=document.getElementById('item1').value;
+
 
     //create new li element
     var li=document.createElement('li');
@@ -96,6 +101,9 @@ function addItem(e)
      //Add textNode with input value
 
      li.appendChild(document.createTextNode(newItem));
+    
+     li.appendChild(document.createTextNode(newItem1));
+
 
      //create del button element
      var button=document.createElement('button');
@@ -111,6 +119,17 @@ function addItem(e)
      //Append li to ul
 
      item.appendChild(li);
+         //create edit button element
+         var button1=document.createElement('button');
+
+         //Add class to edit button
+         button1.className='btn1 btn1-sm float-right edit';
+    
+         //Add TextNode
+         button1.appendChild(document.createTextNode('Edit'));
+
+         li.appendChild(button1);
+         item.appendChild(li);
 
 
 }
@@ -125,6 +144,35 @@ function removeItem(e)
         item.removeChild(li);
     }
   }
+}
+
+//filter Item
+function filterItem(e)
+{
+  //convert to text lowercase
+  var text=e.target.value.toLowerCase();
+  //Get li
+  var ItemList=item.getElementsByTagName('li'); //it's an Html collection
+
+
+  //To convert Html collection to Array
+  Array.from(ItemList).forEach(function(item)
+  {
+    var Itemname=item.firstChild.textContent;
+    console.log(Itemname);
+    var description=item.childNodes[1].textContent;
+
+
+    if(Itemname.toLowerCase().indexOf(text) !=-1||description.toLowerCase().indexOf(text) !=-1)
+
+    {
+      item.style.display='block';
+    }
+    else{
+      item.style.display='none';  
+    }
+  })
+
 }
 //Add Edit button
 
