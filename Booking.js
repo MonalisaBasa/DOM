@@ -29,6 +29,9 @@ function onsubmit(e){
         li.appendChild(document.createTextNode(`${name1.value}:${email1.value}`));
         userList.appendChild(li);
 
+        name1.value='';
+        email1.value='';
+
     }
 
     
