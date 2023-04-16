@@ -44,16 +44,16 @@ form.addEventListener('submit',(e) => {
     e.preventDefault();
     const name=e.target.name.value;          //to retrive value from input field and store in obj
     const email=e.target.Email.value;
-    localStorage.setItem('name',name);
-    localStorage.setItem('Email',email);
+    // localStorage.setItem('name',name);
+    // localStorage.setItem('Email',email);
 
     const obj={
         name:name,
         email:email
         
     };
-    localStorage.setItem('userdetails',JSON.stringify(obj));
-    console.log(localStorage);
+    localStorage.setItem(name,JSON.stringify(obj));
+    // console.log(localStorage);
 
     
 })
