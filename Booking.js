@@ -6,6 +6,8 @@
 //     document.querySelector('body').classList.add('bg-dark');
 // })
 
+//Dispaly li data in sreen dynamically
+
 // const myform=document.querySelector('#my-form');
 // const name1=document.querySelector('#name');
 // const email1=document.querySelector('#Email');
@@ -29,21 +31,30 @@
 //         li.appendChild(document.createTextNode(`${name1.value}:${email1.value}`));
 //         userList.appendChild(li);
 
+//         const del=document.createElement('button');
+//         del.appendChild(document.createTextNode('Delete'));
+//         userList.appendChild(del);
+
+// //clear fields
+
 //         name1.value='';
 //         email1.value='';
 
 //     }
+    
 
     
 
 // }
 
+
+
 //storing details in single row of local storage
 const form=document.getElementById('my-form');
-form.addEventListener('submit',(e) => {
+    form.addEventListener('submit',(e) => {
     e.preventDefault();
-    const name=e.target.name.value;          //to retrive value from input field and store in obj
-    const email=e.target.Email.value;
+    const name=e.target.username.value;          //to retrive value from input field and store in obj
+    const email=e.target.EmailId.value;
     // localStorage.setItem('name',name);
     // localStorage.setItem('Email',email);
 
@@ -52,13 +63,29 @@ form.addEventListener('submit',(e) => {
         email:email
         
     };
-    localStorage.setItem(name,JSON.stringify(obj));
+    localStorage.setItem(obj.name,JSON.stringify(obj));
     // console.log(localStorage);
-
+    ShowUserOnScreen(obj);
     
-})
+});
+// localStorage.getItem(form);
+ function ShowUserOnScreen(obj){
+    const parentElem=document.getElementById('users')
 
+    const childElem=document.createElement('li');
+    childElem.textContent=obj.name + '-' +obj.email;
+    console.log(childElem);
 
-// // localStorage.getItem(myform);
+    const deletebutton=document.createElement('input')
+    deletebutton.type= 'button';
+    deletebutton.value= 'Delete';
+    deletebutton.onclick =()=>{
+        localStorage.removeItem(obj.name);
+        parentElem.removeChild(childElem);
+    }
+    childElem.appendChild(deletebutton);
+    parentElem.appendChild(childElem);
+
+ }
 
 
