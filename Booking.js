@@ -66,6 +66,7 @@ const form=document.getElementById('my-form');
     localStorage.setItem(obj.name,JSON.stringify(obj));
     // console.log(localStorage);
     ShowUserOnScreen(obj);
+    Edit(obj);
     
 });
 // localStorage.getItem(form);
@@ -83,9 +84,24 @@ const form=document.getElementById('my-form');
         localStorage.removeItem(obj.name);
         parentElem.removeChild(childElem);
     }
+    
+
+    const Editbutton=document.createElement('input')
+    Editbutton.type='button';
+    Editbutton.value='Edit';
+    Editbutton.onclick=()=>{
+        localStorage.removeItem(obj.name);
+        parentElem.removeChild(childElem);
+        document.getElementById('username')=obj.name;
+        document.getElementById('EmailId')=obj.email;
+    }
     childElem.appendChild(deletebutton);
-    parentElem.appendChild(childElem);
+    childElem.appendChild(Editbutton);
+    parentElem.appendChild(childElem)
 
  }
+
+ 
+
 
 
