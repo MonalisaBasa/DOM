@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Promise,Async & Await</title>
+</head>
+
+<body>
+    <script>
+        console.log("person1:Shows Ticket");
+        console.log("person2:Shows Ticket");
+        const premovie=async()=> {    //Syantx of Async function.
+           const promisewifeBringingTicks = new Promise((resolve, reject) => {
+            setTimeout(() => {
+                resolve('ticket');
+
+            }, 3000)
+        });
+
+        const getpopcorn =new Promise((resolve,reject)=> resolve(`popcorn`));
+
+        const getbutter=new Promise((resolve,reject)=> resolve (`butter`));
+
+        const getColdDrinks=new Promise((resolve,reject)=> resolve (`ColdDrinks`));
+
+        let ticket= await promisewifeBringingTicks;
+
+        let [popcorn,butter,coke]=await Promise.all([getpopcorn,getbutter,getColdDrinks]);
+        console.log(`${popcorn}, ${butter}, ${coke}`);
+
+        // let ticket = await promisewifeBringingTicks;
+        // console.log('wife:i have the ${ticket}');
+        // console.log('husband: We should go in');
+        // console.log('wife:no i am hungry');
+
+        // let popcorn = await getpopcorn;
+        // console.log('husband: I got some ${popcorn}');
+        // console.log('husband:we should go in ');
+        // console.log('wife: I need butter on my popcorn');
+
+        // let butter=await getbutter;
+        // console.log('husband:we should go in i have ${butter}');
+        // console.log('wife:I need ColdDrinks with popcorn');
+
+        // let ColdDrinks=await getColdDrinks;
+        // console.log('husband:i have some ${ColdDrinks} with popcorn');
+        // console.log('husband:Anything else');
+
+        return ticket;
+
+        }
+
+        
+        premovie().then((m)=>console.log(`person3:Shows Ticket`));
+
+        console.log("Person4:Shows Ticket"); 
+
+
+
+    </script>
+</body>
+
+</html>
