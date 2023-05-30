@@ -77,6 +77,18 @@ const form=document.getElementById('my-form');
 
     
 });
+
+window.addEventListener("DOMContentLoaded",()=>{
+   const data= axios.get("https://crudcrud.com/api/8737613f27b74b4489b7c102f1e12763/appointmentdata")
+    .then((response)=>{
+        for(var i=0;i<response.data.length;i++){
+            ShowUserOnScreen(response.data[i])
+
+        }
+
+    })
+})
+
 // localStorage.getItem(form);
  function ShowUserOnScreen(obj){
     const parentElem=document.getElementById('users')
