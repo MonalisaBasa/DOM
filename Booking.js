@@ -3,10 +3,10 @@
 // btn.addEventListener('click',(e) => {
 //     e.preventDefault();
 //     btn.style.background=" pink";
-//     document.querySelector('body').classList.add('bg-dark');
+//     // document.querySelector('body').classList.add('bg-dark');
 // })
 
-//Dispaly li data in sreen dynamically
+// //Dispaly li data in screen dynamically
 
 // const myform=document.querySelector('#my-form');
 // const name1=document.querySelector('#name');
@@ -35,7 +35,7 @@
 //         del.appendChild(document.createTextNode('Delete'));
 //         userList.appendChild(del);
 
-// //clear fields
+// // //clear fields
 
 //         name1.value='';
 //         email1.value='';
@@ -54,7 +54,7 @@ const form=document.getElementById('my-form');
     form.addEventListener('submit',(e) => {
     e.preventDefault();
     const name=e.target.username.value;          //to retrive value from input field and store in obj
-    const email=e.target.EmailId.value;
+    const email=e.target.EmailId.value;          //Here username and emailid is Id of a field
     // localStorage.setItem('name',name);
     // localStorage.setItem('Email',email);
 
@@ -63,10 +63,18 @@ const form=document.getElementById('my-form');
         email:email
         
     };
-    localStorage.setItem(obj.name,JSON.stringify(obj));
+    // console.log(obj.name);
+    
+     axios.post("https://crudcrud.com/api/8737613f27b74b4489b7c102f1e12763/appointmentdata",obj)  //axios return promise 
+     .then((response)=>{
+        ShowUserOnScreen(obj)
+        console.log(response)
+     })
+     .catch((err)=>{console.log(err)})
+    //localStorage.setItem(obj.name,JSON.stringify(obj));  //it is store in local storage
     // console.log(localStorage);
-    ShowUserOnScreen(obj);
-    Edit(obj);
+    //ShowUserOnScreen(obj);
+
     
 });
 // localStorage.getItem(form);
@@ -75,7 +83,7 @@ const form=document.getElementById('my-form');
 
     const childElem=document.createElement('li');
     childElem.textContent=obj.name + '-' +obj.email;
-    console.log(childElem);
+    // console.log(childElem);
 
     const deletebutton=document.createElement('input')
     deletebutton.type= 'button';
@@ -98,6 +106,7 @@ const form=document.getElementById('my-form');
     childElem.appendChild(deletebutton);
     childElem.appendChild(Editbutton);
     parentElem.appendChild(childElem)
+
 
  }
 
