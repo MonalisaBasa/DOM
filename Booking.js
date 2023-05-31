@@ -116,10 +116,15 @@ window.addEventListener("DOMContentLoaded",()=>{
     Editbutton.type='button';
     Editbutton.value='Edit';
     Editbutton.onclick=()=>{
-        localStorage.removeItem(obj.name);
-        document.getElementById('username')=obj.name;
-        document.getElementById('EmailId')=obj.email;
+        // localStorage.removeItem(obj.name);
+        axios.put("https://crudcrud.com/api/ced2ef56da5f423ea511c06000b2010b/${obj._id}")
+        .then((res)=>{
+            console.log(res);
+        }).catch((err)=>console.log(err))
         parentElem.removeChild(childElem);
+        document.getElementById('username').value=obj.name;
+        document.getElementById('EmailId').value=obj.email;
+        // parentElem.removeChild(childElem);
 
     }
     childElem.appendChild(deletebutton);
