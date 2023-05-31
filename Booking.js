@@ -65,7 +65,7 @@ const form=document.getElementById('my-form');
     };
     // console.log(obj.name);
     
-     axios.post("https://crudcrud.com/api/8737613f27b74b4489b7c102f1e12763/appointmentdata",obj)  //axios return promise 
+     axios.post("https://crudcrud.com/api/ced2ef56da5f423ea511c06000b2010b/appointmentdata",obj)  //axios return promise 
      .then((response)=>{
         ShowUserOnScreen(obj)
         console.log(response)
@@ -77,9 +77,9 @@ const form=document.getElementById('my-form');
 
     
 });
-
+ //To load to the screen
 window.addEventListener("DOMContentLoaded",()=>{
-   const data= axios.get("https://crudcrud.com/api/8737613f27b74b4489b7c102f1e12763/appointmentdata")
+   const data= axios.get("https://crudcrud.com/api/ced2ef56da5f423ea511c06000b2010b/appointmentdata")
     .then((response)=>{
         for(var i=0;i<response.data.length;i++){
             ShowUserOnScreen(response.data[i])
@@ -101,8 +101,14 @@ window.addEventListener("DOMContentLoaded",()=>{
     deletebutton.type= 'button';
     deletebutton.value= 'Delete';
     deletebutton.onclick =()=>{
-        localStorage.removeItem(obj.name);
+        // localStorage.removeItem(obj.name);
+        // parentElem.removeChild(childElem);
+        axios.delete("https://crudcrud.com/api/ced2ef56da5f423ea511c06000b2010b/${obj._id}")
+        .then((res)=>{
+            
+        }).catch((err)=>console.log(err))
         parentElem.removeChild(childElem);
+
     }
     
 
@@ -111,9 +117,10 @@ window.addEventListener("DOMContentLoaded",()=>{
     Editbutton.value='Edit';
     Editbutton.onclick=()=>{
         localStorage.removeItem(obj.name);
-        parentElem.removeChild(childElem);
         document.getElementById('username')=obj.name;
         document.getElementById('EmailId')=obj.email;
+        parentElem.removeChild(childElem);
+
     }
     childElem.appendChild(deletebutton);
     childElem.appendChild(Editbutton);
