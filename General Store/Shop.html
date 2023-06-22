@@ -12,30 +12,16 @@
       crossorigin="anonymous"
     />
     <style>
-      body {
-        background-repeat: no-repeat;
-        background-size: cover;
-      }
-
-      .container {
+     .container {
         width: 450px;
         margin-top: 50px;
         padding: 1px 1px;
       }
-      form {
-        margin: 0px;
-        padding: 30px;
-      }
-      .selectDiv {
-        margin-top: 20px;
-      }
+      
       .btnExpense {
         margin-top: 20px;
       }
-      .form-container {
-        border: 2px solid;
-        border-radius: 10px;
-      }
+      
       #formElements {
         margin: 10px 0px;
       }
@@ -43,7 +29,7 @@
         margin: 0px 5px;
         padding: 0px 5px;
       }
-      .candy-Details {
+      .Item-Details {
         margin-bottom: 10px;
       }
     </style>
@@ -52,13 +38,14 @@
     <div class="container">
       <div class="form-container">
         <form action="#" onsubmit="ItemQuantity(event)" id="formId">
-          <div>
-            <label for="CandyName" class="form-label">Item name</label>
+          <div >
+            <label for="ItemName" class="form-label">ItemName</label>
             <input
               type="text"
-              name="CandyName"
-              id="CandyName"
+              name="ItemName"
+              id="ItemName"
               class="form-control"
+              
             />
           </div>
           <div>
@@ -68,6 +55,7 @@
               name="description"
               id="description"
               class="form-control"
+             
             />
             <div>
               <label for="Price" class="form-label">Price</label>
@@ -76,6 +64,7 @@
                 name="Price"
                 id="Price"
                 class="form-control"
+                
               />
             </div>
             <div>
@@ -85,6 +74,7 @@
                 name="Quantity"
                 id="Quantity"
                 class="form-control"
+              
               />
             </div>
           </div>
